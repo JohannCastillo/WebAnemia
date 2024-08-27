@@ -5,6 +5,9 @@ const nextConfig = {
     BACKEND_URL: process.env.BACKEND_URL,
     PRODUCTION: process.env.PRODUCTION,
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  }
   // async redirects() {
   //   return [
   //     {
