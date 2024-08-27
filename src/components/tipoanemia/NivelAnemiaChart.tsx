@@ -24,7 +24,7 @@ ChartJS.register(
   Legend
 );
 
-const NivelAnemiaChart = ({ pacienteId, nivelAnemia }) => {
+const NivelAnemiaChart = ({ pacienteId, nivelAnemia } : { pacienteId : number, nivelAnemia : string }) => {
   const [chartData, setChartData] = useState({
     labels: [],
     datasets: [
