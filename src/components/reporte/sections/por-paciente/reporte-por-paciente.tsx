@@ -1,4 +1,4 @@
-import { Button, Select, Card } from "antd";
+import { Select, Card } from "antd";
 export default function ReportePorPaciente() {
   return (
     <div>

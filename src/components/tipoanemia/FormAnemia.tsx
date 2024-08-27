@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, Input, Select, Checkbox, Card, Spin } from "antd";
+import { Button, Form, Input, Select, Checkbox, Card } from "antd";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { DiagnosticResponse } from "@/types/Diagnostico";
@@ -38,7 +38,7 @@ const FormAnemia: React.FC = () => {
   const [patients, setPacientes] = useState<
     Array<{ id: string; nombre: string; dni: string; distrito: string }>
   >([]);
-  const { setOpen, setSelectedChatID } = useChatContext()
+  const { setOpen, setSelectedChatID } = useChatContext();
   const [selectedPaciente, setSelectedPaciente] = useState<string | null>(null);
   const [prediction, setPrediction] = useState<DiagnosticResponse | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -51,7 +51,9 @@ const FormAnemia: React.FC = () => {
       setLoading(true);
       try {
         if (session && session.idApoderado) {
-          const response = await axios.get(`${url}/pacientes/apoderado/${session.idApoderado}`);
+          const response = await axios.get(
+            `${url}/pacientes/apoderado/${session.idApoderado}`
+          );
           setPacientes(response.data);
         }
       } catch (error) {
@@ -114,7 +116,15 @@ const FormAnemia: React.FC = () => {
   };
 
   return (
-    <div style={{ display: "flex", gap: "20px", padding: "20px", maxWidth: "1200px", margin: "0 auto" }}>
+    <div
+      style={{
+        display: "flex",
+        gap: "20px",
+        padding: "20px",
+        maxWidth: "1200px",
+        margin: "0 auto",
+      }}
+    >
       <Card
         title="Registrar Predicción de Diagnóstico"
         bordered={false}
@@ -224,20 +234,20 @@ const FormAnemia: React.FC = () => {
         <Card title="Último resultado" bordered={false}>
           <p>Paciente: {selectedPaciente}</p>
           <p>Predicción: {prediction?.diagnostico}</p>
-          {
-            prediction && (
-              <Button
-                onClick={async () => {
-                  const newConversation = await createDiagnosticConversation(prediction.id);
-                  if (!newConversation) return
-                  setOpen(true) // Abrir el chat
-                  setSelectedChatID(newConversation.conversation_id)
-                }}
-              >
-                Obtener recomendaciones
-              </Button>
-            )
-          }
+          {prediction && (
+            <Button
+              onClick={async () => {
+                const newConversation = await createDiagnosticConversation(
+                  prediction.id
+                );
+                if (!newConversation) return;
+                setOpen(true); // Abrir el chat
+                setSelectedChatID(newConversation.conversation_id);
+              }}
+            >
+              Obtener recomendaciones
+            </Button>
+          )}
         </Card>
       </div>
     </div>

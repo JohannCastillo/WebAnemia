@@ -49,7 +49,7 @@ const ChatHistory: React.FC = () => {
               onClick={async () => {
                 // Add new chat
                 const response = await fetcher(
-                  `/chatbot/conversations/create`,
+                  "/chatbot/conversations/create",
                   { method: "POST" }
                 );
                 if (response.ok) {
