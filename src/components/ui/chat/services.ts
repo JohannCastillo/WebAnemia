@@ -8,7 +8,7 @@ export async function sendMessage(selectedChatID: number, message : ChatMessageD
 {
     try {
         const response = await fetcher(`/chatbot/conversations/${selectedChatID}/chat/`,{
-            method: 'POST',
+            method: "POST",
             body: JSON.stringify(message)
         })
         if(response.ok){

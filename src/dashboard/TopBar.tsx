@@ -3,7 +3,7 @@ import { signOut, useSession } from "next-auth/react";
 
 import { useDashboardContext } from "./Provider";
 import { Button } from "antd";
-import { CiLogout  } from 'react-icons/ci'
+import { CiLogout  } from "react-icons/ci"
 import ChatHistory from "@/components/ui/chat/chat-history";
 
 interface CustomSession {

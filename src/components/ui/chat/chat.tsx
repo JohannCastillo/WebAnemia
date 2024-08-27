@@ -42,7 +42,7 @@ export default function Chat(){
             if(!conversation) return;
             if(conversation.conversation.type !== ConversationType.CHAT){
                 const response = await sendMessage(selectedChatID, {
-                    message: 'Quiero más recomendaciones sobre los resultados de la probabilidad de anemia de mi paciente.'
+                    message: "Quiero más recomendaciones sobre los resultados de la probabilidad de anemia de mi paciente."
                 })
                 if(response)
                    await refetchMessages()
@@ -75,7 +75,7 @@ export default function Chat(){
         if (response){
             await refetchMessages()
         }else{
-            messageApi.error('Error, no se pudo enviar el mensaje')
+            messageApi.error("Error, no se pudo enviar el mensaje")
         }
         setNewMessage(null)
     }
@@ -92,8 +92,8 @@ export default function Chat(){
             {contextHolder}
             <article className="grid grid-rows-2 gap-y-3 overflow-hidden overflow-y-auto mb-12"
                 style={{
-                    scrollbarWidth: 'thin',
-                    scrollbarColor: 'rgba(0, 0, 0, 0.2) rgba(255, 255, 255, 0)',
+                    scrollbarWidth: "thin",
+                    scrollbarColor: "rgba(0, 0, 0, 0.2) rgba(255, 255, 255, 0)",
                 }}
             >
                 {

@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import CountInput from './InputNumber';
-import { Select, Button, Modal, List } from 'antd';
-import axios from 'axios';
-import { useSession } from 'next-auth/react';
-import { useMutation } from '@tanstack/react-query';
-import { fetcher } from '@/lib/fetch/fetcher';
-import { SuggestionsResponse } from '@/types/Dieta/suggestions';
-import { useChatContext } from '../ui/chat/chat.context';
-import { createDietaConversation } from '../ui/chat/services';
-import { RESULTS_DIETA } from '@/types/Dieta/results';
-import { config } from '@/lib/config';
+import React, { useState, useEffect } from "react";
+import CountInput from "./InputNumber";
+import { Select, Button, Modal, List } from "antd";
+import axios from "axios";
+import { useSession } from "next-auth/react";
+import { useMutation } from "@tanstack/react-query";
+import { fetcher } from "@/lib/fetch/fetcher";
+import { SuggestionsResponse } from "@/types/Dieta/suggestions";
+import { useChatContext } from "../ui/chat/chat.context";
+import { createDietaConversation } from "../ui/chat/services";
+import { RESULTS_DIETA } from "@/types/Dieta/results";
+import { config } from "@/lib/config";
 
 const { Option } = Select;
 
@@ -18,22 +18,22 @@ interface FormData {
 }
 
 const variablesDiet = [
-  'Verduras',
-  'Carnes rojas',
-  'Aves',
-  'Huevos',
-  'Pescado',
-  'Leche',
-  'Menestra',
-  'Bocaditos Dulces',
-  'Bebidas Azucaradas',
-  'Embutidos',
-  'Frituras',
-  'Azucar',
-  'Frutas',
-  'Desayuno',
-  'Almuerzo',
-  'Cena',
+  "Verduras",
+  "Carnes rojas",
+  "Aves",
+  "Huevos",
+  "Pescado",
+  "Leche",
+  "Menestra",
+  "Bocaditos Dulces",
+  "Bebidas Azucaradas",
+  "Embutidos",
+  "Frituras",
+  "Azucar",
+  "Frutas",
+  "Desayuno",
+  "Almuerzo",
+  "Cena",
 ];
 
 const variablesInputName = [
@@ -55,7 +55,7 @@ const variablesInputName = [
   "frec_fruta"
 ];
 
-// const url = 'https://apianemia.onrender.com';
+// const url = "https://apianemia.onrender.com";
 // const url = config.backendUrl
 
 const FormDieta = () => {
@@ -74,7 +74,7 @@ const FormDieta = () => {
   const { data: session } = useSession();
   const [error, setError] = useState<boolean>(false); // Agregado aquí
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [modalTitle, setModalTitle] = useState('');
+  const [modalTitle, setModalTitle] = useState("");
   const [modalContent, setModalContent] = useState<string[]>([]); // Cambiar a string[]
 
   const suggestionsMutation = useMutation<SuggestionsResponse, Error, number>({
@@ -85,7 +85,7 @@ const FormDieta = () => {
       }
     },
     onError: (error) => {
-      console.error('Error fetching pacientes:', error);
+      console.error("Error fetching pacientes:", error);
       setModalContent([`Error: No se pudieron obtener las recomendaciones.`]);
     },
     onSuccess: (data) => {
@@ -103,7 +103,7 @@ const FormDieta = () => {
           setPacientes(response.data);
         }
       } catch (error) {
-        console.error('Error fetching pacientes:', error);
+        console.error("Error fetching pacientes:", error);
       } finally {
         setLoading(false);
       }
@@ -137,22 +137,22 @@ const FormDieta = () => {
     };
 
     console.log(JSON.stringify(formData))
-    // console.log('FormData:');
-    // console.log('FormData:');
+    // console.log("FormData:");
+    // console.log("FormData:");
     // Object.keys(formData).forEach((key) => {
     //   console.log(`${key}: ${typeof formData[key]}`);
     // });
 
 
     try {
-      console.log('sss')
+      console.log("sss")
       const response = await axios.post(`${config.backendUrl}/predict/dieta`, formData);
       
-      //const response = await axios.post('/api/endpoint', { /* tu payload aquí */ });
+      //const response = await axios.post("/api/endpoint", { /* tu payload aquí */ });
       const dieta = response.data.dieta;
       setDietaResultID(response.data.id)
 
-      let title = '';
+      let title = "";
       setModalContent([]);
       let recommendations: string[] = [];
 
@@ -160,28 +160,28 @@ const FormDieta = () => {
 
       switch (dieta) {
         case RESULTS_DIETA.RIESGO_BAJO:
-          title = 'Probabilidad Baja';
+          title = "Probabilidad Baja";
           break;
         case RESULTS_DIETA.RIESGO_MODERADO:
-          title = 'Probabilidad Media';
+          title = "Probabilidad Media";
           break;
         case RESULTS_DIETA.RIESGO_ALTO:
-          title = 'Probabilidad Alta';
+          title = "Probabilidad Alta";
           break;
         default:
-          title = 'Resultado no reconocido';
-          recommendations = ['Por favor, inténtalo nuevamente.'];
+          title = "Resultado no reconocido";
+          recommendations = ["Por favor, inténtalo nuevamente."];
       }
 
       setModalTitle(title);
       // setModalContent(recommendations);
       setIsModalVisible(true);
       
-      // console.log('Respuesta de la API:', response.data);
+      // console.log("Respuesta de la API:", response.data);
       // setModalContent(`Response: ${response.data.dieta}`); // Actualiza esto según tu estructura de respuesta
       // setIsModalVisible(true);
     } catch (error: any) {
-      setModalTitle('Error');
+      setModalTitle("Error");
       setModalContent([`Error: ${error.message}`]);
       setIsModalVisible(true);    }
   };
@@ -201,15 +201,15 @@ const FormDieta = () => {
         <p className="px-4">
           En este formulario, podrás ingresar la frecuencia con la que consumes diferentes tipos de alimentos y bebidas. Esta información nos ayudará a entender mejor tus hábitos alimenticios y a ofrecerte recomendaciones más personalizadas para mejorar tu dieta. Por favor, completa todos los campos con la mayor precisión posible.
         </p>
-        <div style={{paddingRight: '20px', paddingLeft: '20px'}}>
-          <p className='py-4 font-medium'>Elegir paciente</p>
+        <div style={{paddingRight: "20px", paddingLeft: "20px"}}>
+          <p className="py-4 font-medium">Elegir paciente</p>
           <Select
-            style={{ width: '100%'}}
+            style={{ width: "100%"}}
             placeholder="Selecciona un paciente"
             loading={loading}
             onChange={handlePacienteChange}
             value={selectedPaciente ?? undefined} // Asegura que el valor esté controlado
-            className={!selectedPaciente && error ? 'ant-select-error' : ''} // Agrega clase de error si no hay selección
+            className={!selectedPaciente && error ? "ant-select-error" : ""} // Agrega clase de error si no hay selección
           >
             {pacientes.map(paciente => (
               <Option key={paciente.id} value={paciente.id}>
@@ -217,7 +217,7 @@ const FormDieta = () => {
               </Option>
             ))}
           </Select>
-          {!selectedPaciente && error && <div style={{ color: 'red', fontSize: '12px' }}>Por favor, selecciona un paciente.</div>}
+          {!selectedPaciente && error && <div style={{ color: "red", fontSize: "12px" }}>Por favor, selecciona un paciente.</div>}
 
         </div>
         <div className="grid xl:grid-cols-4 sm:grid-cols-3 mt-4 px-4">
@@ -251,7 +251,7 @@ const FormDieta = () => {
         onOk={handleOk} 
         onCancel={handleOk}
         footer={[
-          <Button className='bg-blue-600 text-white'       
+          <Button className="bg-blue-600 text-white"       
             onClick={async () => {
               if(!dietaResultID) return;
               const newConversation = await createDietaConversation(dietaResultID)
@@ -269,8 +269,8 @@ const FormDieta = () => {
           </Button>,
         ]}
       >
-        <h1 className='font-medium text-xl mb-4'>{modalTitle}</h1>
-        <p className='mb-3'>
+        <h1 className="font-medium text-xl mb-4">{modalTitle}</h1>
+        <p className="mb-3">
           {
             suggestionsMutation.isPending && <span>Generando recomendaciones para tu resultado ...</span>
           }
@@ -291,7 +291,7 @@ const FormDieta = () => {
           )}
         />
         <p
-          className='text-neutral-500 text-xs'
+          className="text-neutral-500 text-xs"
         >
           Estas recomendaciones son generadas por una Inteligencia Artificial, para mayor precisión, consulta a un nutricionista.
         </p>

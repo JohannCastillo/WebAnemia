@@ -1,62 +1,62 @@
 export const Meses = [
     {
         id: 1,
-        label: 'Enero',
+        label: "Enero",
         number: 1,
     },
     {
         id: 2,
-        label: 'Febrero',
+        label: "Febrero",
         number: 2,
     },
     {
         id: 3,
-        label: 'Marzo',
+        label: "Marzo",
         number: 3,
     },
     {
         id: 4,
-        label: 'Abril',
+        label: "Abril",
         number: 4,
     },
     {
         id: 5,
-        label: 'Mayo',
+        label: "Mayo",
         number: 5,
     },
     {
         id: 6,
-        label: 'Junio',
+        label: "Junio",
         number: 6,
     },
     {
         id: 7,
-        label: 'Julio',
+        label: "Julio",
         number: 7,
     },
     {
         id: 8,
-        label: 'Agosto',
+        label: "Agosto",
         number: 8,
     },
     {
         id: 9,
-        label: 'Septiembre',
+        label: "Septiembre",
         number: 9,
     },
     {
         id: 10,
-        label: 'Octubre',
+        label: "Octubre",
         number: 10,
     },
     {
         id: 11,
-        label: 'Noviembre',
+        label: "Noviembre",
         number: 11,
     }, 
     {
         id: 12,
-        label: 'Diciembre',
+        label: "Diciembre",
         number: 12,
     },
 ]

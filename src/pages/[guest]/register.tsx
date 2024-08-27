@@ -1,21 +1,21 @@
 import React, { useContext } from "react";
 import FormPaciente from "@/components/pacientes/FormPaciente";
 import ListPacientes from "@/components/pacientes/ListPacientes";
-import { PacientesContext, PacientesProvider } from '@/providers/pacientesContext';
+import { PacientesContext, PacientesProvider } from "@/providers/pacientesContext";
 import { Alert } from "antd";
 
 const boxStyle: React.CSSProperties = {
-    width: '100%',
+    width: "100%",
     borderRadius: 23,
     padding: 25,
-    backgroundColor: 'white'
+    backgroundColor: "white"
 };
 
 function Registro() {
     const context = useContext(PacientesContext);
 
     if (!context) {
-        throw new Error('PacientesContext must be used within a PacientesProvider');
+        throw new Error("PacientesContext must be used within a PacientesProvider");
     }
 
     const { showAlert, alertMessage, alertType } = context;
@@ -27,7 +27,7 @@ function Registro() {
                 message={alertMessage}
                 type={alertType}
                 showIcon
-                style={{ margin: '20px' }}
+                style={{ margin: "20px" }}
             />
         )}
         </div>

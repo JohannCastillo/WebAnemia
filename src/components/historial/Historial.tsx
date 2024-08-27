@@ -12,7 +12,7 @@ import PacienteSelector from "../tipoanemia/PacienteSelector";
 import UltimoDiagnosticoCard from "../tipoanemia/UltimoDiagnosticoCard";
 import { config } from "@/lib/config";
 
-// import ChartFrecuencias from '../dieta/ChartFrecuencia';
+// import ChartFrecuencias from "../dieta/ChartFrecuencia";
 
 const { TabPane } = Tabs;
 
@@ -52,7 +52,7 @@ interface Dieta {
   updated_at: string;
 }
 
-// const url = 'https://apianemia.onrender.com';
+// const url = "https://apianemia.onrender.com";
 // const url = "http://127.0.0.1:8000";
 
 const HistorialPredicciones = () => {

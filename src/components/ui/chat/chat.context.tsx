@@ -1,12 +1,12 @@
-import { fetcher } from '@/lib/fetch/fetcher';
-import { Conversation, ConversationsHistory, Message } from '@/types/Chat';
-import { ChatMessageDTO } from '@/types/Chat/dto/ChatMessageDTO';
-import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from '@tanstack/react-query';
-import { message } from 'antd';
-import { createContext, useContext, useEffect, useState } from 'react';
-import { getConversationDeetailsByID, sendMessage } from './services';
-import { ConversationType } from '@/types/Chat/types';
-import { ConversationDetails } from '@/types/Chat/conversation-details';
+import { fetcher } from "@/lib/fetch/fetcher";
+import { Conversation, ConversationsHistory, Message } from "@/types/Chat";
+import { ChatMessageDTO } from "@/types/Chat/dto/ChatMessageDTO";
+import { useMutation, UseMutationResult, useQuery, useQueryClient, UseQueryResult } from "@tanstack/react-query";
+import { message } from "antd";
+import { createContext, useContext, useEffect, useState } from "react";
+import { getConversationDeetailsByID, sendMessage } from "./services";
+import { ConversationType } from "@/types/Chat/types";
+import { ConversationDetails } from "@/types/Chat/conversation-details";
 
 interface IChatContextProps{
     open: boolean;
@@ -52,7 +52,7 @@ export default function ChatProvider(
 export function useChatContext(){
     const context = useContext(ChatContext);
     if (context === undefined) {
-        throw new Error('useChatContext must be used within a ChatProvider');
+        throw new Error("useChatContext must be used within a ChatProvider");
     }
     return context;
 }

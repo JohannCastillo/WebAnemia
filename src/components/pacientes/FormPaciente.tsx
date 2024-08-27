@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Button, DatePicker, Form, Input, Select } from "antd";
 import { Flex } from "antd";
-import { useSession } from 'next-auth/react';
+import { useSession } from "next-auth/react";
 import axios from "axios";
 import { PacientesContext } from "@/providers/pacientesContext";
 import { config } from "@/lib/config";
 
-// const url = 'https://apianemia.onrender.com';
+// const url = "https://apianemia.onrender.com";
 
 const { Option } = Select;
 
@@ -35,7 +35,7 @@ const tailFormItemLayout = {
 };
 
 const boxStyle: React.CSSProperties = {
-  width: '100%',
+  width: "100%",
   borderRadius: 23,
   padding: 25,
 };
@@ -55,7 +55,7 @@ const FormPaciente: React.FC<FormPacienteProps> = () => {
   const context = useContext(PacientesContext);
 
   if (!context) {
-    throw new Error('PacientesContext must be used within a PacientesProvider');
+    throw new Error("PacientesContext must be used within a PacientesProvider");
   }
 
   const { pacientes, agregarPaciente, showAlert, alertMessage, alertType, handleShowAlert } = context;
@@ -81,14 +81,14 @@ const FormPaciente: React.FC<FormPacienteProps> = () => {
       const response = await axios.get(`${config.backendUrl}/distritos/provincia/${value}`);
       setDistritos(response.data);
     } catch (error) {
-      console.error('Error fetching distritos:', error);
+      console.error("Error fetching distritos:", error);
     }
   };
 
   const handleSubmit = async (values: any) => {
     const formattedValues = {
         ...values,
-        fecha_nacimiento: values.fecha_nacimiento ? values.fecha_nacimiento.toISOString().split('T')[0] : undefined,
+        fecha_nacimiento: values.fecha_nacimiento ? values.fecha_nacimiento.toISOString().split("T")[0] : undefined,
       };
     
     if (!formattedValues.dni) {
@@ -96,28 +96,28 @@ const FormPaciente: React.FC<FormPacienteProps> = () => {
     }
 
     const jsonData = JSON.stringify(formattedValues);
-    console.log('Datos del formulario en JSON:', jsonData);
+    console.log("Datos del formulario en JSON:", jsonData);
     try {
       if (session && session.idApoderado) {
         const response = await axios.post(`${config.backendUrl}/pacientes/apoderado/${session.idApoderado}/create`, formattedValues);
-        console.log('Respuesta de la API:', response.data);
+        console.log("Respuesta de la API:", response.data);
         agregarPaciente(response.data);
         form.resetFields(); // Clear the form fields
         setProvinciaSelected(undefined); // Reset the Select component
-        handleShowAlert('Paciente registrado correctamente!', 'success');
+        handleShowAlert("Paciente registrado correctamente!", "success");
         console.log(pacientes);
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
 
       const errorMessage = axios.isAxiosError(error) && error.response?.data
             ? Object.values(error.response.data)
                 .flat()
                 .map(msg => `• ${msg}`)
-                .join('\n') // Usa salto de línea para mostrar cada error en una línea separada
-            : 'Error desconocido';
+                .join("\n") // Usa salto de línea para mostrar cada error en una línea separada
+            : "Error desconocido";
 
-      handleShowAlert(errorMessage, 'error');
+      handleShowAlert(errorMessage, "error");
     }
   };
 
@@ -125,8 +125,8 @@ const FormPaciente: React.FC<FormPacienteProps> = () => {
 
     <>
         <div>
-            <h1 className='text-xl font-semibold text-center'>Registrar paciente:</h1>
-            <p className='text-sm p-4'>Ingrese los datos del menor.</p>
+            <h1 className="text-xl font-semibold text-center">Registrar paciente:</h1>
+            <p className="text-sm p-4">Ingrese los datos del menor.</p>
             <Flex gap="middle" align="start" vertical>
             <Flex style={boxStyle} justify="center" align="center">
                 <Form
@@ -140,31 +140,31 @@ const FormPaciente: React.FC<FormPacienteProps> = () => {
                     name="dni"
                     rules={[{ message: "Ingresar DNI del infante" }]}
                 >
-                    <Input style={{ marginLeft: '12px' }} />
+                    <Input style={{ marginLeft: "12px" }} />
                 </Form.Item>
 
                 <Form.Item
                     label="Código Nacido Vivo:"
                     name="codigo_cnv"
-                    rules={[{ required: true, message: 'Ingresar codigo de certificado de nacido vivo' }]}
+                    rules={[{ required: true, message: "Ingresar codigo de certificado de nacido vivo" }]}
                 >
-                    <Input style={{ marginLeft: '12px' }} />
+                    <Input style={{ marginLeft: "12px" }} />
                 </Form.Item>
 
                 <Form.Item
                     label="Nombre Completo:"
                     name="nombre"
-                    rules={[{ required: true, message: 'Ingresar nombre completo del infante' }]}
+                    rules={[{ required: true, message: "Ingresar nombre completo del infante" }]}
                 >
-                    <Input style={{ marginLeft: '12px' }} />
+                    <Input style={{ marginLeft: "12px" }} />
                 </Form.Item>
 
                 <Form.Item
                     label="Provincia:"
-                    rules={[{ required: true, message: 'Seleccione la provincia' }]}
+                    rules={[{ required: true, message: "Seleccione la provincia" }]}
                 >
                     <Select
-                    style={{ marginLeft: '12px' }}
+                    style={{ marginLeft: "12px" }}
                     onChange={handleChangeProvincia}
                     value={provinciaSelected}
                     >
@@ -179,9 +179,9 @@ const FormPaciente: React.FC<FormPacienteProps> = () => {
                 <Form.Item
                     label="Distrito:"
                     name="distrito"
-                    rules={[{ required: true, message: 'Seleccione el distrito' }]}
+                    rules={[{ required: true, message: "Seleccione el distrito" }]}
                 >
-                    <Select style={{ marginLeft: '12px' }}>
+                    <Select style={{ marginLeft: "12px" }}>
                     {distritos.map(district => (
                         <Option key={district.id} value={district.id}>
                         {district.distrito}
@@ -193,9 +193,9 @@ const FormPaciente: React.FC<FormPacienteProps> = () => {
                 <Form.Item
                     label="Sexo:"
                     name="sexo"
-                    rules={[{ required: true, message: 'Ingresar el sexo' }]}
+                    rules={[{ required: true, message: "Ingresar el sexo" }]}
                 >
-                    <Select style={{ marginLeft: '12px' }}>
+                    <Select style={{ marginLeft: "12px" }}>
                     <Option key={1} value="M">MASCULINO</Option>
                     <Option key={2} value="F">FEMENINO</Option>
                     </Select>
@@ -206,12 +206,12 @@ const FormPaciente: React.FC<FormPacienteProps> = () => {
                     name="fecha_nacimiento"
                     rules={[{ required: true, message: "Ingresar la fecha de nacimiento" }]}
                 >
-                <DatePicker format="YYYY-MM-DD" style={{ marginLeft: '12px' }} />          
+                <DatePicker format="YYYY-MM-DD" style={{ marginLeft: "12px" }} />          
                 </Form.Item>
 
                 <Form.Item {...tailFormItemLayout}>
                     <Button type="primary"  htmlType="submit"
-                    style={{ backgroundColor: 'black', color: 'white' }}>
+                    style={{ backgroundColor: "black", color: "white" }}>
                     Registrar
                     </Button>
                 </Form.Item>

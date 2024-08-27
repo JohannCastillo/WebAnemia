@@ -1,7 +1,7 @@
 // Componente hijo (FechaSelector.tsx)
-import React, { useState } from 'react';
-import { DatePicker } from 'antd';
-import dayjs, { Dayjs } from 'dayjs';
+import React, { useState } from "react";
+import { DatePicker } from "antd";
+import dayjs from "dayjs";
 
 
 interface FechaSelectorProps {
@@ -23,9 +23,9 @@ const FechaSelector: React.FC<FechaSelectorProps> = ({ onFechaChange }) => {
   };
 
   return (
-    <div className='p-4'>
-      <p className='px-5'>Seleccione un rango de fechas:</p>
-      <div className='grid grid-cols-2 gap-8 p-6'>
+    <div className="p-4">
+      <p className="px-5">Seleccione un rango de fechas:</p>
+      <div className="grid grid-cols-2 gap-8 p-6">
         <DatePicker
           format="YYYY-MM-DD"
           value={fechaInicio}

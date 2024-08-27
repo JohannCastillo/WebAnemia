@@ -7,14 +7,14 @@ import Markdown from "react-markdown";
 const ChatMessage : React.FC<{ message : Message }> = ({ message }) => {
     return (
         <li className={
-            `h-fit flex items-start ${message.role === Role.USER ? 'flex-row-reverse ml-8' : 'mr-8'}`
+            `h-fit flex items-start ${message.role === Role.USER ? "flex-row-reverse ml-8" : "mr-8"}`
         }
             id={message.id.toString()}
         >
             <Avatar alt="avatar"
             className="shrink-0"
                 style={{
-                    backgroundColor : message.role === Role.BOT ? '#f56565' : '#00b87c'
+                    backgroundColor : message.role === Role.BOT ? "#f56565" : "#00b87c"
                 }}
             >
                 {message.role === Role.BOT ? <FaRobot /> : <FaUser />}

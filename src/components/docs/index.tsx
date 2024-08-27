@@ -90,14 +90,14 @@ export function Docs() {
             <FolderIcon className="h-7 w-7" />
             <span className="px-2 font-medium">icons</span> :
             <p className="pl-1">
-              Icons used for each sidebar-item. You don't need this folder if
+              Icons used for each sidebar-item. You don"t need this folder if
               you can provide your own icons.
             </p>
           </div>
           <div className="mt-6 flex flex-wrap pl-6 md:flex-nowrap">
             <JSXIcon /> <span className="px-2 font-medium">data.tsx</span> :
             <p className="pl-1">
-              It's in this file that you will add routes for each sidebar-item.
+              It"s in this file that you will add routes for each sidebar-item.
               it is an array of objects.
             </p>
           </div>
@@ -155,7 +155,7 @@ export function Docs() {
           <div className="mt-8 flex flex-wrap md:flex-nowrap">
             <JSXIcon /> <span className="px-1 font-medium">Overlay.tsx :</span>{" "}
             displays an overlay that will only be visible on small screens to
-            emphasize the focus on sidebar when it is open. it's also used to
+            emphasize the focus on sidebar when it is open. it"s also used to
             close sidebar on click outside
           </div>
         </div>
@@ -173,7 +173,7 @@ export function Docs() {
         <div>
           <div className="mt-8 flex flex-wrap md:flex-nowrap">
             <JSXIcon /> <span className="px-1 font-medium">TopBar.tsx :</span>
-            You can customize it or replace it with your own TopBar but don't
+            You can customize it or replace it with your own TopBar but don"t
             forget to add a button to toggle sidebar on mobile
           </div>
         </div>
@@ -214,7 +214,7 @@ export function Docs() {
         <h2 className="text-2xl font-medium">Customization</h2>
         <p className="mt-5">
           You can customize everything according to your preferences if it
-          doesn't suit you. What we have done is just provide a solid structure
+          doesn"t suit you. What we have done is just provide a solid structure
           for better scalability and readability of the code.
         </p>
         <p className="mt-5">

@@ -1,5 +1,5 @@
-import React from 'react';
-import { InputNumber, Space } from 'antd';
+import React from "react";
+import { InputNumber, Space } from "antd";
 
 interface CountInputProps {
   variable: string;
@@ -21,7 +21,7 @@ const CountInput: React.FC<CountInputProps> = ({ variable, value, onChange }) =>
         value={value}
         onChange={handleChange}
         type="number"
-        style={{ textAlign: 'center' }}
+        style={{ textAlign: "center" }}
       />
     </Space>
   );

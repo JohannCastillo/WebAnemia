@@ -1,9 +1,9 @@
 import React from "react";
 import { Badge, Button, Drawer } from "antd";
 import { FaBars, FaPlus, FaRobot } from "react-icons/fa";
-import { TbRefresh } from 'react-icons/tb'
-import { PiBowlFood, PiChat } from 'react-icons/pi'
-import { LiaNotesMedicalSolid } from 'react-icons/lia'
+import { TbRefresh } from "react-icons/tb"
+import { PiBowlFood, PiChat } from "react-icons/pi"
+import { LiaNotesMedicalSolid } from "react-icons/lia"
 import { useChatContext } from "./chat.context";
 import moment from "moment";
 import "moment/locale/es";
@@ -82,9 +82,9 @@ const ChatHistory: React.FC = () => {
                         <Badge
                           offset={[-2, 5]}
                           count={<span className="w-5 h-5 bg-red-600 rounded-full text-white grid place-content-center">
-                            {chat.type === ConversationType.DIETA && <PiBowlFood style={{color: 'white'}} size={16}/>}
-                            {chat.type === ConversationType.DIAGNOSTICO && <LiaNotesMedicalSolid style={{color: 'white'}} size={16}/>}
-                            {chat.type === ConversationType.CHAT && <PiChat style={{color: 'white'}} size={14}/>}
+                            {chat.type === ConversationType.DIETA && <PiBowlFood style={{color: "white"}} size={16}/>}
+                            {chat.type === ConversationType.DIAGNOSTICO && <LiaNotesMedicalSolid style={{color: "white"}} size={16}/>}
+                            {chat.type === ConversationType.CHAT && <PiChat style={{color: "white"}} size={14}/>}
                           </span>}
                         >
                           <aside className="shrink-0 w-10 h-10 rounded-full overflow-hidden grid place-content-center bg-slate-200">

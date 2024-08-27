@@ -1,16 +1,16 @@
-import React, { PureComponent } from 'react';
-import { Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Area, ComposedChart, Line } from 'recharts';
+import React, { PureComponent } from "react";
+import { Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Area, ComposedChart, Line } from "recharts";
 
 const monthTickFormatter = (tick : any) => {
-  const [year, month] = tick.split('-');
+  const [year, month] = tick.split("-");
   const date = new Date(Number(year), Number(month) - 1);
-  return date.toLocaleString('es-ES', { month: 'short' });
+  return date.toLocaleString("es-ES", { month: "short" });
 };
 
 const renderMonthTick = (props: any) => {
   const { x, y, payload, index, visibleTicksCount } = props;
   const date = new Date(payload.value);
-  const month = date.toLocaleString('es-ES', { month: 'short' });
+  const month = date.toLocaleString("es-ES", { month: "short" });
   const year = date.getFullYear();
 
   // Only render the year in the middle tick
@@ -73,8 +73,8 @@ export default class Example extends PureComponent<IProps> {
           <Bar dataKey="moderada" fill="#E6AD09"/> 
           <Bar dataKey="leve" fill="#FF6C37"/> 
           <Bar dataKey="normal" fill="#0C8F3D"/> 
-          <Area type="monotone" dataKey="pronostico" name='Pronóstico' fill="#8884d8" stroke="#8884d8" fillOpacity={0.1}/>
-          <Line type="monotone" dataKey="totalAnemia" name='Total diagnósticos' stroke="#ff7300" dot={false} />
+          <Area type="monotone" dataKey="pronostico" name="Pronóstico" fill="#8884d8" stroke="#8884d8" fillOpacity={0.1}/>
+          <Line type="monotone" dataKey="totalAnemia" name="Total diagnósticos" stroke="#ff7300" dot={false} />
         </ComposedChart>
       </ResponsiveContainer>
     );

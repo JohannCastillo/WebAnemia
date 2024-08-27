@@ -1,4 +1,4 @@
-import { Line } from 'react-chartjs-2';
+import { Line } from "react-chartjs-2";
 
 interface DataPoint {
   [key: string]: number;
@@ -26,7 +26,7 @@ const FrequencyChart: React.FC<FrequencyChartProps> = ({ data }) => {
   
   const avgFrequencies: { [key: string]: number } = {};
   Object.keys(data[0]).forEach((key) => {
-    if (key.startsWith('frec_')) {
+    if (key.startsWith("frec_")) {
       const values = data.map((item) => item[key]);
       const avgValue = values.reduce((a, b) => a + b, 0) / values.length;
       avgFrequencies[key] = avgValue;
@@ -35,18 +35,18 @@ const FrequencyChart: React.FC<FrequencyChartProps> = ({ data }) => {
 
   // Crea el gráfico
   const chartData: ChartData = {
-    labels: Object.keys(avgFrequencies).map((key) => key.replace('frec_', '')),
+    labels: Object.keys(avgFrequencies).map((key) => key.replace("frec_", "")),
     datasets: [{
-      label: 'Frecuencias',
+      label: "Frecuencias",
       data: Object.values(avgFrequencies),
-      backgroundColor: 'rgba(0,0,0,0)',
-      borderColor: 'rgba(34, 139, 34, 1)',      
+      backgroundColor: "rgba(0,0,0,0)",
+      borderColor: "rgba(34, 139, 34, 1)",      
       //borderWidth: 1,
     }],
   };
 
   return (
-    <div className='m-6'>
+    <div className="m-6">
       <h2 className="font-medium text-lg mb-4">Frecuencia promedio de consumo de alimentos:</h2>
       <Line data={chartData} />
     </div>

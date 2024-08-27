@@ -26,7 +26,7 @@ const CardDescription = (props: CardData) => {
                 <h1 className="mb-6 block font-sans text-3xl font-medium leading-[1.5] tracking-normal text-white antialiased">
                 {props.data.title}
                 </h1>
-                <p className='font-mono text-sm text-white'>{props.data.description}</p>
+                <p className="font-mono text-sm text-white">{props.data.description}</p>
             </div>
         </div>  
     );

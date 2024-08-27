@@ -1,5 +1,5 @@
 export enum ConversationType {
-    DIETA = 'dieta',
-    CHAT = 'chat',
-    DIAGNOSTICO = 'diagnostico',
+    DIETA = "dieta",
+    CHAT = "chat",
+    DIAGNOSTICO = "diagnostico",
 }

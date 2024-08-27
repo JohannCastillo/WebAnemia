@@ -1,7 +1,6 @@
-import React, {useState} from 'react';
-import { Line } from 'react-chartjs-2';
-import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Title, Tooltip, Legend } from 'chart.js';
-import FechaSelector from './FechaSelector';
+import React from "react";
+import { Line } from "react-chartjs-2";
+import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Title, Tooltip, Legend } from "chart.js";
 
 // Define la interfaz para la dieta
 interface Paciente {
@@ -72,10 +71,10 @@ const HistorialGrafico: React.FC<HistorialGraficoProps> = ({ dietas}) => {
     labels,
     datasets: [
       {
-        label: 'DX Dieta',
+        label: "DX Dieta",
         data: data.map(d => d.dx_dieta),
-        borderColor: 'rgba(255, 99, 132, 1)',
-        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: "rgba(255, 99, 132, 1)",
+        backgroundColor: "rgba(255, 99, 132, 0.2)",
       },
     ],
   };
@@ -91,7 +90,7 @@ const HistorialGrafico: React.FC<HistorialGraficoProps> = ({ dietas}) => {
             y: {
               title: {
                 display: true,
-                text: 'Probabilidad de Anemia',
+                text: "Probabilidad de Anemia",
               },
               min: 0,
               max: 4,
@@ -99,13 +98,13 @@ const HistorialGrafico: React.FC<HistorialGraficoProps> = ({ dietas}) => {
                 callback: (value) => {
                   switch (value) {
                     case 1:
-                      return 'Baja';
+                      return "Baja";
                     case 2:
-                      return 'Media';
+                      return "Media";
                     case 3:
-                      return 'Alta';
+                      return "Alta";
                     default:
-                      return '';
+                      return "";
                   }
                 },
               },
@@ -113,7 +112,7 @@ const HistorialGrafico: React.FC<HistorialGraficoProps> = ({ dietas}) => {
           },
           plugins: {
             legend: {
-              position: 'top' as const,
+              position: "top" as const,
             },
             tooltip: {
               callbacks: {

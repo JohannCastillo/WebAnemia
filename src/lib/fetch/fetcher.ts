@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import { COOKIE_ACCESS_TOKEN } from "@/constants/cookies";
 
 const getClientSideCookie = async (name : string) => {
-    if (typeof window === 'undefined') 
+    if (typeof window === "undefined") 
         return;
     console.log("getClientSideCookie", name);
     return Cookies.get(name);
@@ -19,8 +19,8 @@ export const fetcher = async (
         ...init,
         headers: {
             ...init?.headers,
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${token}`,
+            "Content-Type": "application/json",
         },
     })
 };

@@ -2,8 +2,8 @@ import { Pagination } from "../pagination";
 import { ConversationType } from "./types";
 
 export enum Role {
-    USER = 'user',
-    BOT = 'bot'
+    USER = "user",
+    BOT = "bot"
 }
 
 export interface ConversationsHistory extends Pagination{
