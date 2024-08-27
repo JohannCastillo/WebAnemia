@@ -20,10 +20,7 @@ export default function ReportePorPaciente() {
         />
       </Card>
       <Card title="Reporte de diagnósticos">
-        <Card title="Último diagnóstico" content="XD">
-          
-        </Card>
-        
+        <Card title="Último diagnóstico" content="XD"></Card>
       </Card>
     </div>
   );

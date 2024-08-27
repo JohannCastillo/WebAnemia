@@ -6,15 +6,11 @@ import { useEffect } from "react";
 export default function HomePage() {
   const session = useSession();
   const router = useRouter();
-  useEffect(()=>{
-    if(session.status === "authenticated"){
+  useEffect(() => {
+    if (session.status === "authenticated") {
       router.push("/guest/register");
     }
-  }, [session.status])
+  }, [session.status]);
 
-  return (
-    session.status === "unauthenticated" && (
-        <Login/>
-    )
-  );
+  return session.status === "unauthenticated" && <Login />;
 }

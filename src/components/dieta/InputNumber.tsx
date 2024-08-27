@@ -7,7 +7,11 @@ interface CountInputProps {
   onChange: (value: number | null, variable: string) => void;
 }
 
-const CountInput: React.FC<CountInputProps> = ({ variable, value, onChange }) => {
+const CountInput: React.FC<CountInputProps> = ({
+  variable,
+  value,
+  onChange,
+}) => {
   const handleChange = (value: number | null) => {
     onChange(value, variable);
   };

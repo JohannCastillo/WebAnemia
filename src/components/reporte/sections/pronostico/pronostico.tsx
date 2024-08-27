@@ -6,17 +6,21 @@ export default function Pronostico() {
   const [comparar, setComparar] = useState(false);
 
   return (
-    <Card 
+    <Card
       title="Estado actual y pronóstico de prevalencia de anemia en niños en La Libertad"
-      extra={<Checkbox checked={comparar} onChange={(e) => setComparar(e.target.checked)}>Hacer comparación</Checkbox>}
+      extra={
+        <Checkbox
+          checked={comparar}
+          onChange={(e) => setComparar(e.target.checked)}
+        >
+          Hacer comparación
+        </Checkbox>
+      }
     >
       <div className={`grid grid-cols-1 ${comparar && "grid-cols-2"}`}>
-      <Reporte/>
-      {
-        comparar &&
-          <Reporte/>
-      }
+        <Reporte />
+        {comparar && <Reporte />}
       </div>
-    </Card> 
-  )
+    </Card>
+  );
 }

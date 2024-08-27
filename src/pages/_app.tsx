@@ -5,18 +5,18 @@ import { DashboardLayout } from "@/dashboard/Layout";
 import Provider from "@/context/Provider";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const isLoginPage = Component.name === "HomePage"; 
+  const isLoginPage = Component.name === "HomePage";
   return (
     <Provider>
       <Head>
         <title>Web Anemia</title>
       </Head>
-      {isLoginPage? (
+      {isLoginPage ? (
         <Component {...pageProps} />
       ) : (
-          <DashboardLayout >
-            <Component {...pageProps} />
-          </DashboardLayout>
+        <DashboardLayout>
+          <Component {...pageProps} />
+        </DashboardLayout>
       )}
     </Provider>
   );

@@ -4,13 +4,13 @@ import React, { createContext, useState, ReactNode } from "react";
 type AlertType = "success" | "info" | "warning" | "error";
 
 type Paciente = {
-  id: number,
-  codigo_cnv: string,
-  dni: string,
-  nombre: string,
-  sexo: string,
-  fecha_nacimiento: string,
-  distrito: number
+  id: number;
+  codigo_cnv: string;
+  dni: string;
+  nombre: string;
+  sexo: string;
+  fecha_nacimiento: string;
+  distrito: number;
 };
 
 interface PacientesContextType {
@@ -22,7 +22,9 @@ interface PacientesContextType {
   handleShowAlert: (message: string, type: AlertType) => void;
 }
 
-const PacientesContext = createContext<PacientesContextType | undefined>(undefined);
+const PacientesContext = createContext<PacientesContextType | undefined>(
+  undefined
+);
 
 const PacientesProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [pacientes, setPacientes] = useState<any[]>([]); // Reemplaza "any" con el tipo específico si es posible
@@ -39,12 +41,22 @@ const PacientesProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     }, 3000);
   };
 
-  const agregarPaciente = (paciente: any) => { // Reemplaza "any" con el tipo específico si es posible
+  const agregarPaciente = (paciente: any) => {
+    // Reemplaza "any" con el tipo específico si es posible
     setPacientes([...pacientes, paciente]);
   };
 
   return (
-    <PacientesContext.Provider value={{ pacientes, agregarPaciente, showAlert, alertMessage, alertType, handleShowAlert }}>
+    <PacientesContext.Provider
+      value={{
+        pacientes,
+        agregarPaciente,
+        showAlert,
+        alertMessage,
+        alertType,
+        handleShowAlert,
+      }}
+    >
       {children}
     </PacientesContext.Provider>
   );
