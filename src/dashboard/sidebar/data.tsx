@@ -1,8 +1,7 @@
 import { HomeIcon } from "./icons/HomeIcon";
 
 import { ProjectIcon } from "./icons/ProjectIcon";
-import { BsGraphUpArrow  } from "react-icons/bs"
-
+import { BsGraphUpArrow } from "react-icons/bs";
 
 export const data = [
   {

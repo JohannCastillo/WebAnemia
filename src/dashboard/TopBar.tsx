@@ -3,14 +3,14 @@ import { signOut, useSession } from "next-auth/react";
 
 import { useDashboardContext } from "./Provider";
 import { Button } from "antd";
-import { CiLogout  } from "react-icons/ci"
+import { CiLogout } from "react-icons/ci";
 import ChatHistory from "@/components/ui/chat/chat-history";
 
 interface CustomSession {
   user?: {
-      name?: string | null;
-      email?: string | null;
-      image?: string | null;
+    name?: string | null;
+    email?: string | null;
+    image?: string | null;
   };
   accessToken?: string;
   idToken?: string;
@@ -19,7 +19,6 @@ interface CustomSession {
 export function TopBar() {
   const { toggleSidebar } = useDashboardContext();
   const { data: session } = useSession() as { data: CustomSession | null };
-
 
   return (
     <header className="relative z-10 h-16 w-full items-center bg-white shadow md:h-20 lg:rounded-2xl">
@@ -69,22 +68,17 @@ export function TopBar() {
             </div>
           </div>
           <div className="relative ml-5 flex w-1/4  gap-2 items-center justify-end p-1 sm:right-auto sm:mr-0">
-              <h1 className="whitespace-nowrap">{session?.user?.name}</h1>
-              <img
-                alt="Usuario"
-                src={session?.user?.image || ""}
-                className="mx-auto ml-2 h-10 w-10 rounded-full object-cover"
-              />
-              <ChatHistory />
-              <Button
-                danger
-                onClick={() => signOut()}
-              >
-                <CiLogout />
-                <span className="sr-only">
-                  Cerrar sesión
-                </span>
-              </Button>
+            <h1 className="whitespace-nowrap">{session?.user?.name}</h1>
+            <img
+              alt="Usuario"
+              src={session?.user?.image || ""}
+              className="mx-auto ml-2 h-10 w-10 rounded-full object-cover"
+            />
+            <ChatHistory />
+            <Button danger onClick={() => signOut()}>
+              <CiLogout />
+              <span className="sr-only">Cerrar sesión</span>
+            </Button>
           </div>
         </div>
       </div>

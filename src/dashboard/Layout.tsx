@@ -3,7 +3,6 @@ import React from "react";
 import { TopBar } from "./TopBar";
 import { Sidebar } from "./sidebar/Sidebar";
 import { useDashboardContext } from "./Provider";
-import Provider from "@/context/Provider";
 interface ChildrenProps {
   children: React.ReactNode;
 }
