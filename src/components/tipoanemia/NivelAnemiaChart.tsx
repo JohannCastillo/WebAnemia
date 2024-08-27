@@ -58,12 +58,12 @@ const NivelAnemiaChart = ({ pacienteId, nivelAnemia } : { pacienteId : number, n
 
         const data = response.data[nivelAnemia].diagnosticos.data;
 
-        const labels = data.map((diagnostico) =>
+        const labels = data.map((diagnostico : any) =>
           new Date(diagnostico.created_at).toLocaleDateString()
         );
-        const hemoglobina = data.map((diagnostico) => diagnostico.hemoglobina);
-        const peso = data.map((diagnostico) => diagnostico.peso);
-        const estatura = data.map((diagnostico) => diagnostico.talla);
+        const hemoglobina = data.map((diagnostico : any) => diagnostico.hemoglobina);
+        const peso = data.map((diagnostico : any) => diagnostico.peso);
+        const estatura = data.map((diagnostico : any) => diagnostico.talla);
 
         setChartData({
           labels,
