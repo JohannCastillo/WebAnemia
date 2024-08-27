@@ -234,7 +234,7 @@ const FormDieta = () => {
       </div>
       <div className="grid xl:grid-cols-4 sm:grid-cols-3 mt-4 px-4">
         {variablesDiet.map((variable, index) => (
-          <div key={index} className="grid grid-cols-2 gap-2">
+          <div key={variable} className="grid grid-cols-2 gap-2">
             <h4 className="mt-2 font-sans text-sm font-semibold">
               Frecuencia de {variable}:
             </h4>
