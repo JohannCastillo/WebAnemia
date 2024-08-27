@@ -297,6 +297,7 @@ const FormDieta = () => {
             bordered
             dataSource={modalContent}
             loading={suggestionsMutation.isPending}
+            rowKey={(item) => item}
             renderItem={(item) => <List.Item key={item}>{item}</List.Item>}
           />
           <p className="text-neutral-500 text-xs">

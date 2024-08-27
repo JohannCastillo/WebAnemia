@@ -186,7 +186,7 @@ const HistorialPredicciones = () => {
 
             {selectedPacienteId && nivelAnemia && (
               <NivelAnemiaChart
-                pacienteId={selectedPacienteId.toString()}
+                pacienteId={Number(selectedPacienteId)}
                 nivelAnemia={nivelAnemia}
               />
             )}
