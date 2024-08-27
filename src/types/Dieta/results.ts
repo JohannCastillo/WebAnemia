@@ -1,0 +1,5 @@
+export enum RESULTS_DIETA {
+    RIESGO_ALTO = 1,
+    RIESGO_MODERADO = 2,
+    RIESGO_BAJO = 3,
+}
