@@ -4,6 +4,7 @@ import axios from "axios";
 import { PacientesContext } from "@/providers/pacientesContext";
 import { useSession } from "next-auth/react";
 import { config } from "@/lib/config";
+import { Paciente } from "@/types/Paciente";
 
 const boxStyle: React.CSSProperties = {
   width: "100%",
@@ -15,10 +16,9 @@ const App: React.FC = () => {
   const context = useContext(PacientesContext);
 
   // Manejar el caso en que el contexto es undefined
-  if (!context) {
-    return <div>Loading...</div>; // O cualquier otro mensaje o componente que indique que el contexto está cargando
-  }
-  const { pacientes } = context;
+  
+  // const { pacientes } = context;
+  const [pacientes, setPacientes] = useState<Paciente[]>([]);
   const [refreshPacientes, setRefreshPacientes] = useState([]);
   const { data: session, status } = useSession();
 
@@ -41,6 +41,17 @@ const App: React.FC = () => {
     fetchPacientes();
   }, [pacientes]);
 
+  useEffect(() => {
+    if(context){
+      setPacientes(context.pacientes);
+    }
+  },[context]);
+
+
+  if (!context) {
+    return <div>Loading...</div>; // O cualquier otro mensaje o componente que indique que el contexto está cargando
+  }
+
   return (
     <>
       <div style={{ padding: "25px" }}>
@@ -49,7 +60,7 @@ const App: React.FC = () => {
           size="small"
           bordered
           dataSource={refreshPacientes}
-          renderItem={(item) => <List.Item>{item.nombre}</List.Item>}
+          renderItem={(item : Paciente) => <List.Item>{item.nombre}</List.Item>}
         />
       </div>
     </>
