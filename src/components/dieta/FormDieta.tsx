@@ -297,7 +297,7 @@ const FormDieta = () => {
             bordered
             dataSource={modalContent}
             loading={suggestionsMutation.isPending}
-            renderItem={(item) => <List.Item>{item}</List.Item>}
+            renderItem={(item) => <List.Item key={item}>{item}</List.Item>}
           />
           <p className="text-neutral-500 text-xs">
             Estas recomendaciones son generadas por una Inteligencia Artificial,
