@@ -87,7 +87,7 @@ const FormDieta = () => {
     },
     onError: (error) => {
       console.error("Error fetching pacientes:", error);
-      setModalContent([`Error: No se pudieron obtener las recomendaciones.`]);
+      setModalContent(["Error: No se pudieron obtener las recomendaciones."]);
     },
     onSuccess: (data) => {
       setModalContent(data.suggestions);
